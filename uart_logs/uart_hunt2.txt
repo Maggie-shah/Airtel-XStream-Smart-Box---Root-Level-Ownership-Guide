@@ -1,0 +1,260 @@
+# Round 2: multi-key cycle (NL/CR/ESC/Space/x/^C/c/a)
+# captured uart_hunt2: /dev/ttyUSB0 @115200 8N1, Skyworth HY00A boot
+# bytes=8299
+
+a
+/system/bin/sh: a: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+x
+130|console:/ $ �MIU_DQS-OK
+BISTOKteeloader_entry
+Rev00000000
+TEE loader AC
+BFE
+RPMB
+20080220
+NOTICE:  BL3-1: v1.1(debug):be0b9bd6
+NOTICE:  BL3-1: Built : 11:22:49, May 25 2022
+INFO:    warmboot return address : 64881c00
+INFO:    BL3-1: Initializing runtime services
+NOTICE:  From args : boot_mbx = 2002e118 
+INFO:    [0;32;31m [Booting] mstar_send_magic_ATF 485 [m
+INFO:    BL3-1: Initializing BL3-2
+[Ramlog] ramlog_init init success
+
+INFO:    BL3-1: Preparing for EL3 exit to normal world
+INFO:    BL3-1: Next image address = 0x20080220
+INFO:    BL3-1: Next image spsr = 0x3c9
+INFO:    BIN1_64bit mode
+INFO:    R2 0 May 25 2022 11:22:41
+INFO:    R3 0
+INFO:    R4 0
+ree_entry
+
+LZMA Decompression...ok
+[LDR_SysInit][303]Hardware Initialization
+[LDR_SysInit][305]MsOS Initialization
+[LDR_SysInit][307]MIU Initialization
+[Utopia][MIU]: [MIU INFO] miu open
+create instance at p with private size 1619486240 bytes at p
+[LDR_SysInit][310]MMIO Initialization
+[LDR_SysInit][312]SEM Initialization
+[LDR_SysInit][316]SYS Initialization
+[Utopia][SYS]: [35mFunction = SYSOpen, Line = 1621, [SYS INFO] OPEN INSTANCE...[m
+create instance at p with private size 1619486480 bytes at p
+[SetMiu][273]CONFIG_MIU0_GROUP_PRIORITY = 1:0:2:3
+[SetMiu][274]CONFIG_MIU1_GROUP_PRIORITY = 1:0:2:3
+[SetMiu][275]CONFIG_MIU0_GROUP_SELMIU = 0000:0000:0000:0000:0204:0000:0000
+[SetMiu][276]CONFIG_MIU1_GROUP_SELMIU = 6828:FFFF:77FE:65AE:699B:3FEF:01DF
+[MDrv_MIU_SetGroupPriority_UBoot][294]IN
+[MDrv_MIU_SetGroupPriority_UBoot][336]OK
+[MDrv_MIU_SetGroupPriority_UBoot][294]IN
+[MDrv_MIU_SetGroupPriority_UBoot][336]OK
+[LDR_SysInit][329]Initialize BDMA
+create instance at p with private size 1619486672 bytes at p
+[msAPI_Flash_Init][704]Initialize eMMC
+[HAL_CIPHER_Set_DMA_FileIn_Burst][4221] u32waitCycle=0 not support
+[HAL_CIPHER_Set_DMA_FileOut_Burst][4327] u32waitCycle=0 not support
+[ERROR]Enable SlotMap[1] failed
+[31mDSCMB HW Init Fail
+[m[DEBUG]ALERT FAIL: The drvDSCMB2 is not initialized
+
+CA: stTeeMode.OsType=0
+[LDR_SysInit][354]Hardware Initialization Completed
+
+[CALDR_Entry][101]Hello CALDR_Entry-Begin
+Android Launcher ( OTA Check Status )
+_API_Android_Launcher
+[33m
+
+[OTA Stage = 0x0][Do not OTA] verify and launch uboot...[0m
+[33mDo not OTA, Ready to verify app...[0m
+    Verify Application(lzma uboot) in Mboot partition...
+[HAL_CIPHER_ReadException][2162] u32ExcTmp[0]=0x0, u32ExcTmp[1]=0x7070000, u32ExcTmp[2]=0x20
+_RSACTRL address =  0x1f342400
+
+
+    Start Launch Application(lzma uboot)!!...
+Other chip FM = 0xf3 CA_ChipCode 282
+[disable_cache][133]Disable Cache
+
+LZMA Decompression...ok
+INFO:    CPU0 Preparing for EL3 exit to normal world
+INFO:    CPU0 Next image address = 0x20280000
+INFO:    CPU0 Next image spsr = 0x3c9
+INFO:    [0;32;31m mstar_primary_kernel_enter 133 2dedab9c 23000000 22280000 70d91e[m
+C[0;32;31m [RAMLOG] tee_entry_get_ramlog_config 358 [m
+
+[0;32;31m [RAMLOG] Chip ID: 6d bc c8 a4 00 00 00 00[m
+
+_check_ramlog_binary Ramlog AUTHEN fail 
+
+console:/ $ x[0;32;31m [RAMLOG] tee_get_ramlog_config 343 [m
+
+[0;32;31m [RAMLOG] Chip ID: 6d bc c8 a4 00 00 00 00[m
+
+_is_ramlog_enable AUTHEN buffer or len is zero 
+
+^C
+1ca
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ [1;33mInit wrapper sys mutex successful. Pid:2459
+[0mInfo: get MI daemon priority before System Init: [-20]
+!!!Enter MI daemon prcoess!!
+[1;31mmi_os_PrintCaller[705]: Not implement
+[0m[1;33mMI_SYS_Init() with Parameter
+[0m[Utopia][MSOS]: [INFO][MsOS_SHM_Init][1041]     Mappd share memory:
+[Utopia][MSOS]: [INFO][_MsOS_InitEventGroup][3958]     [_MsOS_InitEventGroup][3958] got new shm ptr!
+[utopia info] utopia init
+[utopia info] open: /application/utopia.conf
+[31m [utopia info] don't have utopia.conf [0m 
+[Utopia][MSOS]: [WARN][MsOS_Init][5767]     Already inited.
+open mma dev failed
+[Utopia][[MSOS_MMA_query_feature]]: [000655] mma_open fail
+[Utopia][MIU]: [MIU INFO] miu open
+[Utopia][SYS]: [35mFunction = SYSOpen, Line = 1625, [SYS INFO] OPEN INSTANCE...[m
+[Utopia][IPAUTH]: 0036028c00f3007d
+[Utopia][IPAUTH V3]: [Auth OK]
+[Utopia][[IPAUTH V3]]: AUTH STATUS:1
+>> Start  INJPLAY service
+>> Start  PVR service
+n/sh: ca: inaccessible or not found
+127|console:/ $ Open MI_OSD kernel module successful
+_s32MikAudioFd: 18, audio init result : 0  
+_s32MikDscFd: 22, audio init result : 0  
+127|console:/ $ SYS User inited:0 
+_s32MikAudioFd: 18, audio init result : 2  
+_s32MikAoutFd: 28, aout init result : 0  
+_s32MikSmcFd: 19, smc init result : 0  
+_s32MikDscFd: 22, audio init result : 0  
+_s32MikKlFd: 37, kl init result : 0  
+_s32MikCipherFd: 38, cipher init result : 0   cipher init PID= 2459
+_s32MikAdvcaFd: 39, advca init result : 0  
+!!!MI daemon prcoess start!!!
+Info: get MI daemon priority after Module Init: [0]
+_s3x
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ /system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 127|console:/ $ ^C
+130|console:/ $ a
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ xca
+/system/bin/sh: xca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ x^C
+130|console:/ $ ca
+/system/bin/sh: ca: inaccessible or not found
+127|console:/ $ 
+127|console:/ $ 
