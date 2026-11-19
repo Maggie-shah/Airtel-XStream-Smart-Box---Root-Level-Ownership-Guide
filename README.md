@@ -160,9 +160,19 @@ Network prerequisite: the box's Ethernet must be on the same subnet as the host
 
 ### Step 3 — Stable ADB Control from Host
 
+> 🔁 **Keep approving "USB debugging" on-screen!** Even with the key seeded,
+> this vendor build pops the *"Allow USB debugging?"* RSA dialog on the TV at
+> (re)connections — and the dialog **auto-dismisses in ~10 s**. Keep the
+> remote handy and tap **Allow / Always allow from this computer** every time
+> it appears — especially after reboots and adbd hiccups. If a connection
+> silently fails, the timer probably ate the dialog: reconnect once and
+> approve quickly. Seeding `adb_keys` (Step 4) reduces but does not
+> eliminate these prompts.
+
 Wi-Fi pairing dialogs pop on every new connection. The author uses the
 `adb_shell` Python library, which connects + auths cleanly, on a persistent
 single connection to avoid popup spam:
+
 
 ```python
 # acmd2.py — resilient one-shot ADB runner
@@ -562,8 +572,10 @@ gzip -t sys_core.tgz && echo OK
 - Snapshot extras while you're there: `getprop > build_props.txt`,
   `pm list packages -f > packages.txt`.
 
-_Result: 56 MB extracted — full MTK HALs, SEPolicy rules, init rc's, VINTF
-manifest, panel tuning configs — everything shell-uid can legally reach._
+_Result: 56 MB extracted, 163 files — full MTK HALs, SEPolicy rules, init rc's,
+VINTF manifest, panel tuning configs — everything shell-uid can legally reach.
+Note: busybox-tar archives need member-carving for the last ~10 vdex files
+(GNU tar/python tarfile both stall mid-stream); sizes+md5 still match box-side._
 
 _Rev 3 (2026-11-19): added Appendix 11 — full firmware-content dump via
 busybox httpd (22 MB archives, 56 MB extracted, checksummed). Rev 2 added QoL
