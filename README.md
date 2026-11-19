@@ -112,19 +112,14 @@ near the PSU shield, and connect a 3.3V USB-UART bridge:
 > Locate the gaps with a continuity tester (header pad → nearest trace stub);
 > a thin braid wire or a solder blob per trace closes them.
 
-![Photo 1](screenshots/1.jpg)
+![Full PCB](screenshots/pcb_full.jpg)
+*HY00A board — full PCB during teardown.*
 
-![Photo 2](screenshots/2.jpg)
+![RX/TX jumpers](screenshots/uart_jumpers.jpg)
+*The RX and TX traces ship open — solder two jumpers to close them.*
 
-![Photo 3](screenshots/3.jpg)
-
-![Photo 4](screenshots/4.jpg)
-
-![Photo 5](screenshots/5.jpg)
-
-![Photo 6](screenshots/6.jpg)
-
-![Photo 7](screenshots/7.jpg)
+![RX/TX wiring](screenshots/uart_wiring.jpg)
+*3.3V USB-UART (FTDI) wired to the header.*
 
 UART pinout on the header:
 
@@ -187,7 +182,6 @@ Wi-Fi pairing dialogs pop on every new connection. The author uses the
 `adb_shell` Python library, which connects + auths cleanly, on a persistent
 single connection to avoid popup spam:
 
-
 ```python
 # acmd2.py — resilient one-shot ADB runner
 from adb_shell.adb_device import AdbDeviceTcp
@@ -240,6 +234,12 @@ Install & fire:
 adb install bridge.apk
 adb shell am start -n com.omp.pwn/.MainActivity      # fires ENABLE_ADB as uid-1000
 ```
+
+![After pwn](screenshots/after_pwn_screen.jpg)
+*On-screen result immediately after firing `ENABLE_ADB` via the app.*
+
+![Device info](screenshots/device_info.jpg)
+*`showSystemInfo`-style device panel — model/build visible.*
 
 Post-reboot behavior: `PwnReceiver` catches `BOOT_COMPLETED` and re-fires
 `ENABLE_ADB`, restoring ADB even if the vendor drifts the property.
@@ -306,6 +306,9 @@ adb shell am start -a android.intent.action.MAIN -c android.intent.category.HOME
 ```
 
 Swap back anytime by re-running `add-role-holder` with the other package.
+
+![Arc Launcher](screenshots/arc_launcher.jpg)
+*Arc Launcher running as HOME.*
 
 ### Step 8 — Disable OTA Updaters
 
@@ -536,7 +539,6 @@ until one of the above surfaces.
 
 **Boot animation:** `/system/media/bootanimation.zip` (9.8 MB) — replacement
 requires `/system` write, i.e. the unlock above. Deferred until then.
-
 
 ## 11. Appendix: Firmware Dump via BusyBox HTTPD (no root)
 
