@@ -105,6 +105,15 @@ UART:         3.3V TTL, 115200 8N1, accessible via bottom vents
 Open the enclosure (Torx screws under rubber feet), locate the 4-pad UART header
 near the PSU shield, and connect a 3.3V USB-UART bridge:
 
+> 🔧 **PCB modification required:** the RX and TX traces feeding this header
+> ship **left open** on the PCB — the SoC side is disconnected from the pads
+> out of the factory. **Solder a jumper across each open gap** (RX trace and
+> TX trace) or the port stays silent even though everything else is correct.
+> Locate the gaps with a continuity tester (header pad → nearest trace stub);
+> a thin braid wire or a solder blob per trace closes them.
+
+UART pinout on the header:
+
 | Pad | Signal |
 |---|---|
 | 1 | GND |
