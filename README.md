@@ -287,7 +287,31 @@ adb shell pm enable com.skw.ota.update
 
 Verified via `enabled=3` (`DISABLED_USER`) in `dumpsys package`.
 
-### Step 9 — ProductTest USB Command Lane (uid-1000)
+### Step 10 — QoL Hardening (Private DNS, ads, OTA fence)
+
+```bash
+# Box-wide ad/tracker filtering — no app required:
+adb shell settings put global private_dns_mode hostname
+adb shell settings put global private_dns_specifier dns.adguard.com
+
+# Silence the recommendations/home-row ads service:
+adb shell pm disable-user --user 0 com.google.android.tvrecommendations
+
+# Bridge v2 (bridge.apk in this repo) declares WRITE_SECURE_SETTINGS;
+# grant it after install so the receiver can self-heal settings:
+adb shell pm grant com.omp.pwn android.permission.WRITE_SECURE_SETTINGS
+```
+
+Notes:
+- `private_dns_mode=hostname` + specifier survives reboots; AdGuard DoT resolves
+  ads away for **every** app including Netlix banners and launcher widgets.
+- Signing key stability: `build_bridge.py` persists `pwn_testkey.pem` /
+  `pwn_cert.der`; rebuilding no longer rotates the package signature (which
+  would force `pm uninstall` before reinstall).
+- The signing key files and the derived `.der` are gitignored — generate your
+  own; don't ship keys.
+
+### Step 11 — ProductTest USB Command Lane (uid-1000)
 
 Skyworth's factory test app (`SkyProductTest`, uid **1000**, runs under
 `android.uid.system` shared UID) processes a plaintext command file from any
@@ -394,8 +418,11 @@ through ProductTest's uid-1000 surface instead**.
 | Subscription apps | installed | gone | `pm list packages \| grep airtel` → only `producttest` remains |
 | HOME role | unset / stub | `com.omeda.arc` | `dumpsys role` |
 | OTA updaters | enabled | `enabled=3` | `dumpsys package` |
+| Private DNS | unset | `dns.adguard.com` (mode `hostname`) | `settings get global private_dns_*` |
+| Home-row ads (`tvrecommendations`) | enabled | `disabled-user` | `pm list packages -d` |
 | ADB on TCP | off | `:5555 LISTEN`, auto-auth | `netstat -tln` |
 | Post-reboot ADB | n/a | auto-restored | `getprop init.svc.adbd` → `running` |
+| Bridge permissions | base | `WRITE_SECURE_SETTINGS` granted | `dumpsys package com.omp.pwn` |
 | uid-1000 exec | unused | stick-driven | `logcat` `SkwProductTest` entries |
 
 ## 7. Troubleshooting
@@ -476,3 +503,9 @@ until one of the above surfaces.
 
 **Boot animation:** `/system/media/bootanimation.zip` (9.8 MB) — replacement
 requires `/system` write, i.e. the unlock above. Deferred until then.
+
+---
+
+*Rev 2 (2026-11-19): added QoL hardening step (Private DNS / ads / bridge
+grant), stable signing keys, bootstrap.sh stick maker, MIT license, and the
+MBOOT UART appendix. Verified end-to-end on build `C10.5.0-20250818`.*
