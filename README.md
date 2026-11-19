@@ -256,7 +256,7 @@ adb install bridge.apk
 adb shell am start -n com.omp.pwn/.MainActivity      # fires ENABLE_ADB as uid-1000
 ```
 
-![After pwn](screenshots/after_pwn_screen.jpg?v=2)
+![After pwn](screenshots/pwn_enabled_screen.jpg)
 *On-screen result immediately after firing `ENABLE_ADB` via the app.*
 
 ![Device info](screenshots/device_info.jpg)
