@@ -1,0 +1,38 @@
+# <- this is for comment / total file size must be less than 4KB
+# Kernel protect is automatically done by mboot
+
+# Boot from RamDisk.
+setenv bootargs console
+saveenv
+setenv bootargs console=ttyS0,115200 androidboot.console=ttyS0 init=/init CORE_DUMP_PATH=/data/core_dump.%%p.gz KDebug=1 resolution=DACOUT_1080P_60 delaylogo=true security=selinux SD_CONFIG=2 loglevel=0 str_ignore_wakelock loop.max_part=7 sysrq_always_enabled=1
+setenv bootlogo_gopidx 3
+setenv bootlogo_buffer E_MMAP_ID_BOOTLOGO_BUFFER
+setenv str_crc 2
+setenv db_table 0
+setenv verify n
+setenv WDT_ENABLE 0
+setenv sync_mmap 1
+setenv CONFIG_PATH /vendor/tvconfig/config
+setenv panel_path /vendor/tvconfig/config/panel/DACOUT_1080P_60.ini
+setenv customer_ini_path /vendor/tvconfig/config/model/Customer_1.ini
+setenv GOP_SET_MUX 1:0:3:2
+setenv music_mute 3
+setenv mboot_default_env 0
+setenv resolution 8
+setenv resolution_reset 8
+setenv auto_timing 18
+setenv hdcp_enable 1
+setenv MAP_TYPE MI
+setenv MI_MAP_PARTITION tvconfig
+setenv MI_MAP_PATH config/MMAP_MI.h
+setenv hdmicolor 9
+setenv avb_enable TRUE
+setenv devicestate lock
+setenv cvbs_status 1
+setenv chip_id
+setenv board_env_ini_sha256
+setenv board_env_ini_oem_sha256
+saveenv
+sync_mmap
+dbg ERROR
+% <- this is end of file symbol

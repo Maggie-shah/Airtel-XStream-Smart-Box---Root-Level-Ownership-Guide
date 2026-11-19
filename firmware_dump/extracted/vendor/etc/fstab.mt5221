@@ -1,0 +1,34 @@
+
+# Android fstab file.
+#<src>                                                  <mnt_point>         <type>    <mnt_flags>                                          <fs_mgr_flags>
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+
+system                                                 /system              ext4      ro,barrier=1                                          wait,slotselect,avb=vbmeta,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
+vendor                                                 /vendor              ext4      ro,barrier=1                                          wait,slotselect,avb,logical,first_stage_mount
+
+/dev/block/platform/mstar_mci.0/by-name/tvservice       /mnt/vendor/tvservice   ext4      ro                                                    wait,slotselect,avb,first_stage_mount
+/dev/block/platform/mstar_mci.0/by-name/tvconfig        /vendor/tvconfig    ext4      ro                                                     wait,slotselect,avb,first_stage_mount
+/dev/block/platform/mstar_mci.0/by-name/metadata        /metadata           ext4      noatime,nosuid,nodev,discard,sync                     wait,formattable,first_stage_mount
+/dev/block/platform/mstar_mci.0/by-name/userdata        /data               ext4      noatime,nosuid,nodev,discard                                  wait,quota,latemount,reservedsize=128M,fileencryption=aes-256-xts,checkpoint=block
+/dev/block/zram0                                        none                swap      defaults                                              zramsize=1072693248
+/dev/block/platform/mstar_mci.0/by-name/tvcertificate   /vendor/tvcertificate      ext4      noatime,nosuid,nodev                                  wait
+/dev/block/platform/mstar_mci.0/by-name/tvcertificate   /mnt/tvcertificate      ext4      noatime,nosuid,nodev                                  wait
+/dev/block/mmcblk0boot0                                 /boot1              emmc      defaults                                              defaults
+/dev/block/mmcblk0boot1                                 /boot2              emmc      defaults                                              defaults
+/dev/block/platform/mstar_mci.0/by-name/MBOOT           /MBOOT              emmc      defaults                                              defaults
+/dev/block/platform/mstar_mci.0/by-name/MPOOL           /MPOOL              emmc      defaults                                              defaults
+/dev/block/platform/mstar_mci.0/by-name/misc            /misc               emmc      defaults                                              defaults
+/dev/block/platform/mstar_mci.0/by-name/boot            /boot               emmc      defaults                                              defaults,slotselect
+/dev/block/platform/mstar_mci.0/by-name/tee             /tee                emmc      defaults                                              defaults
+/dev/block/platform/mstar_mci.0/by-name/dtbo            /dtbo               emmc      defaults                                              defaults
+/dev/block/platform/mstar_mci.0/by-name/RTPM            /RTPM               emmc      defaults                                              defaults
+/dev/block/platform/mstar_mci.0/by-name/dtb             /dtb                emmc      defaults                                              defaults
+/dev/block/platform/mstar_mci.0/by-name/optee           /optee              emmc      defaults                                              defaults
+/dev/block/platform/mstar_mci.0/by-name/armfw           /armfw              emmc      defaults                                              defaults
+/devices/platform/ms_sdmmc*                             auto                auto      defaults                                              encryptable=true,voldmanaged=usb:auto
+/devices/platform/mstar_fcie*                           auto                auto      defaults                                              encryptable=true,voldmanaged=usb:auto
+/devices/Mstar-ehci*                                    auto                auto      defaults                                              encryptable=true,voldmanaged=usb:auto
+/devices/Mstar-xhci*                                    auto                auto      defaults                                              encryptable=true,voldmanaged=usb:auto
+/dev/block/platform/mstar_mci.0/by-name/vbmeta          /vbmeta             emmc      defaults                                              defaults,slotselect
+/dev/block/platform/mstar_mci.0/by-name/upgrade         /upgrade            emmc      defaults                                              defaults,slotselect

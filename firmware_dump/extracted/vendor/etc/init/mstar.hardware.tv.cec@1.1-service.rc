@@ -1,0 +1,5 @@
+service mstarcec /vendor/bin/hw/mstar.hardware.tv.cec@1.1-service
+    class hal
+    user system
+    group system wakelock input
+    capabilities SYS_NICE

@@ -1,0 +1,6 @@
+service hidlimw-1-0 /vendor/bin/hw/vendor.irdeto.hal.hidlimw@1.0-service
+    class hal
+    user root
+# --> skyworth modify
+    group root audio system sdcard_rw drmrpc
+# <-- skyworth modify end

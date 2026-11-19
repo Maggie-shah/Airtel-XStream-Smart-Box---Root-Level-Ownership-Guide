@@ -1,0 +1,25 @@
+[group0]
+insmod    /vendor/lib/modules/kdrv-xc.ko             none
+insmod    /vendor/lib/modules/kdrv_alg.ko            none
+insmod    /vendor/lib/modules/iniparser.ko           none
+insmod    /vendor/lib/modules/utpa2k.ko              none
+insmod    /vendor/lib/modules/hdcp1x.ko              none
+insmod    /vendor/lib/modules/hdcp2x.ko              none
+insmod    /vendor/lib/modules/xcker.ko               none
+insmod    /vendor/lib/modules/mwgifker.ko            none
+insmod    /vendor/lib/modules/misck.ko               none
+insmod    /vendor/lib/modules/mik.ko                 none
+insmod    /vendor/lib/modules/mstar_fbdev_mi.ko      none
+[group1]
+insmod    /vendor/lib/modules/firmware_class.ko      path="/vendor/etc/firmware/"
+insmod    /vendor/lib/modules/cfg80211.ko            none
+insmod    /vendor/lib/modules/gspca_main.ko          none
+insmod    /vendor/lib/modules/ecdh_generic.ko        none
+insmod    /vendor/lib/modules/bluetooth.ko           none
+insmod    /vendor/lib/modules/bnep.ko                none
+insmod    /vendor/lib/modules/rfcomm.ko              none
+insmod    /vendor/lib/modules/uhid.ko                none
+insmod    /vendor/lib/modules/wlan_mt7663_sdio.ko    none
+insmod    /vendor/lib/modules/btmtk_mt7663_sdio.ko   none
+[group2]
+insmod    /vendor/lib/modules/mali_kbase.ko          none

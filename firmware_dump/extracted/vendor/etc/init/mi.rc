@@ -1,0 +1,24 @@
+on fs
+    start mtk_init_module_list
+
+on early-boot
+    exec /vendor/bin/mtkModuleInit wait /sys/module/mik/initstate
+    chown system drmrpc /proc/utopia
+    chmod 660 /proc/utopia
+    chown system system /proc/executor
+    chmod 660 /proc/executor
+    chown system drmrpc /proc/utopia_mdb/mbx
+    chmod 660 /proc/utopia_mdb/mbx
+    start midaemon
+
+#on boot
+# service for mi
+service midaemon /mnt/vendor/tvservice/bin/midaemon
+    setenv LD_LIBRARY_PATH /mnt/vendor/tvservice/glibc:/vendor/tvconfig/config:/vendor/lib
+    class core
+    console
+    oneshot
+    seclabel u:r:midaemon:s0
+    user system
+    group sdcard_rw drmrpc
+

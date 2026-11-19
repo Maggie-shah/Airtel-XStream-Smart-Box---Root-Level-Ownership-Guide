@@ -1,0 +1,5 @@
+service settingmanager_hal_service /vendor/bin/hw/mstar.hardware.settingmanager@1.0-service
+	class hal
+	user system
+        group system wakelock input
+        capabilities BLOCK_SUSPEND SYS_BOOT

@@ -1,0 +1,130 @@
+#line 1 "vendor/mediatek-stb/common/sepolicy/property_contexts"
+##########################
+# mstar properties
+#
+persist.vendor.mstar.                               u:object_r:mstar_system_prop:s0
+ro.vendor.mstar.                                    u:object_r:mstar_system_prop:s0
+vendor.mstar.                                       u:object_r:mstar_system_prop:s0
+vendor.mstar.media.                                 u:object_r:mstar_media_prop:s0
+vendor.mstar.primary.audioHAL.                      u:object_r:mstar_media_prop:s0
+vendor.ms.mstplayer.                                u:object_r:mstar_media_prop:s0
+vendor.mstar.mmfixedfreq.                           u:object_r:mstar_media_prop:s0
+
+vendor.mstar.pppoe.                                 u:object_r:system_prop:s0
+vendor.mtk.hdmi.                                    u:object_r:mstar_system_prop:s0
+vendor.mtk.support.dolbyvision                      u:object_r:mstar_system_prop:s0
+vendor.mtk.support.hdr10                            u:object_r:mstar_system_prop:s0
+vendor.mtk.support.hlg                              u:object_r:mstar_system_prop:s0
+
+vendor.mtk.has.screen_on                            u:object_r:system_prop:s0
+ro.vendor.mtk.system.s.m.support                    u:object_r:system_prop:s0
+
+ro.vendor.mtk.str.woc.ignore                        u:object_r:mstar_default_prop:s0
+vendor.mtk.power.debug                              u:object_r:mstar_default_prop:s0
+vendor.mtk.debug.codec2                             u:object_r:mstar_default_prop:s0
+vendor.mtk.debug.omx                                u:object_r:mstar_default_prop:s0
+vendor.mtk.debug.libstagefrighthw                   u:object_r:mstar_default_prop:s0
+vendor.mtk.debug.camera                             u:object_r:mstar_default_prop:s0
+vendor.mtk.debug.hwcomposer2                        u:object_r:mstar_default_prop:s0
+vendor.mtk.debug.fbdev                              u:object_r:mstar_default_prop:s0
+vendor.mtk.debug.aipq                               u:object_r:mstar_default_prop:s0
+vendor.mtk.debug.settingmanager                     u:object_r:mstar_default_prop:s0
+vendor.mtk.debug.boxsetting                         u:object_r:mstar_default_prop:s0
+vendor.mtk.debug.gralloc                            u:object_r:mstar_default_prop:s0
+vendor.mtk.debug.np                                 u:object_r:mstar_default_prop:s0
+vendor.mtk.debug.hdmicec                            u:object_r:mstar_default_prop:s0
+vendor.mtk.debug.midmx                              u:object_r:mstar_default_prop:s0
+vendor.mtk.debug.healthd                            u:object_r:mstar_default_prop:s0
+vendor.mtk.debug.wifi                               u:object_r:mstar_default_prop:s0
+vendor.mtk.debug.audio                              u:object_r:mstar_default_prop:s0
+
+vendor.sys.                                         u:object_r:mstar_default_prop:s0
+persist.vendor.bt.                                  u:object_r:mstar_default_prop:s0
+persist.vendor.sys.                                 u:object_r:mstar_default_prop:s0
+ro.vendor.sys.                                      u:object_r:mstar_default_prop:s0
+ro.vendor.camera.                                   u:object_r:mstar_default_prop:s0
+ro.vendor.hdmi.                                     u:object_r:mstar_default_prop:s0
+ro.vendor.nrdp.modelgroup                           u:object_r:mstar_default_prop:s0
+ro.vendor.nrdp.validation                           u:object_r:mstar_default_prop:s0
+ro.vendor.nrdp.oemmodel                             u:object_r:mstar_default_prop:s0
+vendor.display-size                                 u:object_r:mstar_default_prop:s0
+vendor.mstar.camera.                                u:object_r:mstar_default_prop:s0
+persist.vendor.mstar.xcdip.enable                   u:object_r:mstar_default_prop:s0
+vendor.mstar.4k2k.enable                            u:object_r:mstar_default_prop:s0
+vendor.mstar.media.venc.                            u:object_r:mstar_default_prop:s0
+ro.boot.slot_suffix                                 u:object_r:mstar_default_prop:s0
+ro.boot.veritymode                                  u:object_r:mstar_default_prop:s0
+ro.boot.hardware                                    u:object_r:mstar_default_prop:s0
+ro.boot.slot                                        u:object_r:mstar_default_prop:s0
+ro.vendor.mtk.                                      u:object_r:mstar_default_prop:s0
+
+ro.vendor.mstar.str.enable                          u:object_r:mstar_str_enable_prop:s0
+vendor.mstar.vdec.disable_mfcodec                   u:object_r:ctl_console_prop:s0
+
+#for mw
+vendor.mstar.audio.init                             u:object_r:mstar_default_prop:s0
+vendor.mstar.hwc.ds                                 u:object_r:mstar_default_prop:s0
+vendor.mstar.desk-display-mode                      u:object_r:mstar_default_prop:s0
+vendor.mstar.enable.sdr2hdr                         u:object_r:mstar_default_prop:s0
+vendor.mstar.videoadvert.finished                   u:object_r:mstar_default_prop:s0
+vendor.mstar.resolution.4k2kEnableUI                u:object_r:mstar_default_prop:s0
+vendor.mstar.bootvideo.mode                         u:object_r:mstar_default_prop:s0
+vendor.mstar.reproducerate                          u:object_r:mstar_default_prop:s0
+vendor.mtk.cecsetlanguage                           u:object_r:mstar_default_prop:s0
+vendor.mstar.resolutionState                        u:object_r:mstar_default_prop:s0
+vendor.mtk.hdr.seamless                             u:object_r:mstar_default_prop:s0
+vendor.mtk.transcode.ddp.support                    u:object_r:mstar_default_prop:s0
+vendor.mtk.xdpi                                     u:object_r:mstar_default_prop:s0
+vendor.mtk.ydpi                                     u:object_r:mstar_default_prop:s0
+vendor.mtk.hdr.mode                                 u:object_r:mstar_default_prop:s0
+persist.vendor.mtk.aspect.ratio.type                u:object_r:mstar_default_prop:s0
+persist.vendor.mtk.mode.brightness                  u:object_r:mstar_default_prop:s0
+persist.vendor.mtk.mode.contrast                    u:object_r:mstar_default_prop:s0
+persist.vendor.mtk.mode.saturation                  u:object_r:mstar_default_prop:s0
+persist.vendor.mtk.mode.hue                         u:object_r:mstar_default_prop:s0
+persist.vendor.mtk.mode.sharpness                   u:object_r:mstar_default_prop:s0
+persist.vendor.mtk.dobly.mode                       u:object_r:mstar_default_prop:s0
+persist.vendor.mtk.dts.scale                        u:object_r:mstar_default_prop:s0
+
+
+ro.vendor.mstar.hdmi.set_menu_language              u:object_r:exported3_default_prop:s0 exact bool
+
+#For MultiPlayer
+vendor.mtk.multiplayer.                             u:object_r:system_prop:s0
+
+# For aipq service
+vendor.mtk.aipq.                                    u:object_r:powerctl_prop:s0
+
+# For wake on wifi
+vendor.mtk.getWakeupReason.start                    u:object_r:mstar_system_prop:s0
+vendor.mtk.setWopacketPort.start                    u:object_r:mstar_system_prop:s0
+vendor.mtk.wakeupReason                             u:object_r:mstar_system_prop:s0
+
+# For MNFXService
+vendor.mtk.hdmi.audio                               u:object_r:mstar_system_prop:s0
+vendor.mtk.support.surround_sound                   u:object_r:mstar_system_prop:s0
+vendor.mtk.support.atmos                            u:object_r:mstar_system_prop:s0
+vendor.mtk.nfx_in_foreground                        u:object_r:powerctl_prop:s0
+
+# For aiaq service
+vendor.mtk.aiaq.                                    u:object_r:powerctl_prop:s0
+
+# For tee-supplicant status
+vendor.mtk.tee-supplicant.ready                     u:object_r:mstar_default_prop:s0
+
+#For tvinput
+vendor.mtk.dtv.start                                u:object_r:mstar_default_prop:s0
+persist.vendor.mtk.audiosystem.volume               u:object_r:mstar_default_prop:s0
+#line 1 "vendor/skyworth/sepolicy/property_contexts"
+##########################
+# system properties
+#
+
+vendor.skyworth.                                  u:object_r:skyworth_system_prop:s0
+persist.vendor.skyworth.                          u:object_r:skyworth_persist_prop:s0
+
+
+#line 1 "system/sepolicy/reqd_mask/property_contexts"
+# empty property_contexts file - this file is used to generate an empty
+# non-platform property context for devices without any property_contexts
+# customizations.

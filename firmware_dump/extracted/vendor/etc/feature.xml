@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature>
+    <!-- CompilerFlag -->
+    <CompilerFlag name="PIP_ENABLE" value="1" />
+    <CompilerFlag name="TRAVELING_ENABLE" value="1" />
+    <CompilerFlag name="OFL_DET" value="1" />
+    <CompilerFlag name="PREVIEW_MODE_ENABLE" value="1" />
+    <CompilerFlag name="FREEVIEW_AU_ENABLE" value="1" />
+    <CompilerFlag name="CC_ENABLE" value="1" />
+    <CompilerFlag name="BRAZIL_CC_ENABLE" value="1" />
+    <CompilerFlag name="KOREAN_CC_ENABLE" value="1" />
+    <CompilerFlag name="ATSC_CC_ENABLE" value="1" />
+    <CompilerFlag name="ISDB_CC_ENABLE" value="1" />
+    <CompilerFlag name="NTSC_CC_ENABLE" value="1" />
+    <CompilerFlag name="ATV_NTSC_ENABLE" value="1" />
+    <CompilerFlag name="ATV_PAL_ENABLE" value="1" />
+    <CompilerFlag name="ATV_CHINA_ENABLE" value="1" />
+    <CompilerFlag name="ATV_PAL_M_ENABLE" value="1" />
+    <CompilerFlag name="HDMITX_ENABLE" value="1" />
+    <CompilerFlag name="HBBTV_ENABLE" value="1" />
+    <CompilerFlag name="INPUT_SOURCE_LOCK_ENABLE" value="1" />
+    <CompilerFlag name="EPG_ENABLE" value="1" />
+    <CompilerFlag name="AD_SWITCH_ENABLE" value="1" />
+    <!-- Capability -->
+    <Capability name="ATV_MANUAL_TUNING_ENABLE" value="1" />
+    <Capability name="AUTO_HOH_ENABLE" value="1" />
+    <Capability name="AUDIO_DESCRIPTION_ENABLE" value="1" />
+    <Capability name="THREED_DEPTH_ENABLE" value="1" />
+    <Capability name="SELF_DETECT_ENABLE" value="1" />
+    <Capability name="THREED_CONVERSION_TWODTOTHREED" value="1" />
+    <Capability name="THREED_CONVERSION_AUTO" value="1" />
+    <Capability name="THREED_CONVERSION_PIXEL_ALTERNATIVE" value="1" />
+    <Capability name="THREED_CONVERSION_FRAME_ALTERNATIVE" value="1" />
+    <Capability name="THREED_CONVERSION_CHECK_BOARD" value="1" />
+    <Capability name="THREED_TWOD_AUTO" value="1" />
+    <Capability name="THREED_TWOD_PIXEL_ALTERNATIVE" value="1" />
+    <Capability name="THREED_TWOD_FRAME_ALTERNATIVE" value="1" />
+    <Capability name="THREED_TWOD_CHECK_BOARD" value="1" />
+    <Capability name="PIP_SINGLE_AUDIO_OUPUT_ENABLE" value="1" />
+</Feature>

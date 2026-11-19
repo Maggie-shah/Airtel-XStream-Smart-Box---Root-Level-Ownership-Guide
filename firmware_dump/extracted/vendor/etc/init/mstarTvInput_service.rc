@@ -1,0 +1,5 @@
+service mstarTvInput /vendor/bin/hw/mstar.hardware.tv.input@1.0-service
+    class hal
+    user system
+    group system wakelock input
+    capabilities BLOCK_SUSPEND

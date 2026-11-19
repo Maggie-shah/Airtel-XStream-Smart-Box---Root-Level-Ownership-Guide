@@ -1,0 +1,4 @@
+service skyworth_hal_sysctl_service /vendor/bin/hw/vendor.skyworth.hardware.sysctl@1.0-service
+	class hal
+	user system
+	group system

@@ -1,0 +1,2 @@
+#format:[KEY]=[VALUE]
+device_idle_constants=inactive_to=900000,idle_after_inactive_to=1000,locating_to=1000,idle_pending_to=240000,max_idle_pending_to=600000,idle_pending_factor=1.2,idle_to=7200000,max_idle_to=28800000,idle_factor=2,

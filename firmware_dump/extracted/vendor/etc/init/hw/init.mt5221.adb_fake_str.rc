@@ -1,0 +1,8 @@
+on property:sys.usb.config=none
+    write /sys/power/wake_unlock "usb_adb_enable"
+
+on property:sys.usb.config=mtp
+    write /sys/power/wake_unlock "usb_adb_enable"
+
+on property:sys.usb.config=adb
+    write /sys/power/wake_lock "usb_adb_enable"
