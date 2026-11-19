@@ -504,8 +504,59 @@ until one of the above surfaces.
 **Boot animation:** `/system/media/bootanimation.zip` (9.8 MB) — replacement
 requires `/system` write, i.e. the unlock above. Deferred until then.
 
----
 
-*Rev 2 (2026-11-19): added QoL hardening step (Private DNS / ads / bridge
-grant), stable signing keys, bootstrap.sh stick maker, MIT license, and the
-MBOOT UART appendix. Verified end-to-end on build `C10.5.0-20250818`.*
+## 11. Appendix: Firmware Dump via BusyBox HTTPD (no root)
+
+Raw block devices (`/dev/block/by-name/*`) are SELinux-denied to the `shell`
+uid — but nearly all firmware *content* lives on filesystems readable as
+ordinary files. This is how the whole readable surface was extracted to a PC.
+
+### Coverage
+
+| Region | Dumped? | Notes |
+|---|---|---|
+| `/system` framework/bin/lib/etc/media | ✅ | ~21 MB tgz |
+| `/vendor` etc + `tvconfig` (panel/tuning!) | ✅ | ~1.1 MB tgz |
+| build props + package inventory | ✅ | 361 props / 95 pkgs |
+| `/system/app`, `priv-app` APKs | optional | same method, just bigger |
+| `boot_a/b`, `dtbo`, `vbmeta`, `MBOOT` raw | ❌ | block reads need uid-0 |
+
+### Procedure
+
+```bash
+# 1) Archive on-box (fire-and-forget; streaming tar over adb times out):
+adb shell 'nohup busybox sh -c "cd / && tar czf /data/local/tmp/sys_core.tgz \
+    /system/framework /system/bin /system/lib /system/lib64 /system/etc \
+    /system/fonts /system/media 2>/dev/null; touch /data/local/tmp/.done1" &'
+adb shell 'nohup busybox sh -c "cd / && tar czf /data/local/tmp/vendor_full.tgz \
+    /vendor/etc /vendor/tvconfig 2>/dev/null; touch /data/local/tmp/.done2" &'
+
+# 2) Serve /data/local/tmp over WiFi:
+adb shell 'busybox httpd -p 8099 -h /data/local/tmp'
+
+# 3) Mirror from the PC (native TCP — fast, no adb packet overhead):
+mkdir -p fw_dump && cd fw_dump
+for f in sys_core.tgz vendor_full.tgz build_props.txt packages.txt; do
+    wget -q --timeout=60 "http://<BOX_IP>:8099/$f"
+done
+
+# 4) Verify (sizes byte-match; gzip -t passes; md5 optional):
+gzip -t sys_core.tgz && echo OK
+```
+
+### Gotchas
+
+- Long tar streams die over `adb_shell` TCP sessions — always background with
+  `nohup … &` and poll for the sentinel file, don't wait on the stream.
+- PC `wget` may linger on keep-alive after transfer; use `--timeout` or kill
+  stragglers — the files land complete regardless.
+- Snapshot extras while you're there: `getprop > build_props.txt`,
+  `pm list packages -f > packages.txt`.
+
+_Result: 56 MB extracted — full MTK HALs, SEPolicy rules, init rc's, VINTF
+manifest, panel tuning configs — everything shell-uid can legally reach._
+
+_Rev 3 (2026-11-19): added Appendix 11 — full firmware-content dump via
+busybox httpd (22 MB archives, 56 MB extracted, checksummed). Rev 2 added QoL
+hardening (Private DNS, ad-service removal, bridge grants), stable signing
+keys, bootstrap.sh, MIT license, and the MBOOT UART appendix._*
