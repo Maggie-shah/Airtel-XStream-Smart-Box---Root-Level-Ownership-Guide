@@ -98,7 +98,25 @@ UART:         3.3V TTL, 115200 8N1, accessible via bottom vents
      → install / runApp / startHttpServer / etc.
 ```
 
-## 4. Step-by-Step Reproduction
+## 4. Host Environment & Prerequisites
+
+Everything in this guide was performed on **Linux (Ubuntu)** — the host PC ran
+Ubuntu with standard tools only:
+
+| Tool | Used for |
+|---|---|
+| `python3` + `pip` | base |
+| `adb_shell` (pip) | network ADB control |
+| `openssl` (cms) | APK v1 signing |
+| `androguard` (pip) | dex/APK analysis |
+| `picocom` (or any serial terminal) | UART console |
+| ImageMagick `convert` | image/metadata handling |
+
+Commands assume a Debian/Ubuntu-like shell (`bash`, `sudo`, `apt`).
+Windows/macOS users: adapt the serial port name (`COMx` / `/dev/tty.usb*`)
+and install the same tools via pip/brew.
+
+## 5. Step-by-Step Reproduction
 
 ### Step 1 — Physical / Serial Setup
 
@@ -391,7 +409,7 @@ receiver manually without the stick. Once the stick is unplugged the HttpServer
 goes down too. For a persistent, no-stick lane, use the stick once to
 `install -s bridge.apk` and rely on `PwnReceiver` + adb to operate afterward.
 
-## 5. Reverse-Engineering Notes
+## 6. Reverse-Engineering Notes
 
 ### File-by-File Artifact Reference
 
@@ -446,7 +464,7 @@ write-up; a reflection-based payload avoiding hidden APIs):
 Conclusion: this HAL is read-only and not a root vector; **escalation goes
 through ProductTest's uid-1000 surface instead**.
 
-## 6. Verification Matrix
+## 7. Verification Matrix
 
 | Check | Before | After | Proof |
 |---|---|---|---|
@@ -461,7 +479,7 @@ through ProductTest's uid-1000 surface instead**.
 | Bridge permissions | base | `WRITE_SECURE_SETTINGS` granted | `dumpsys package com.omp.pwn` |
 | uid-1000 exec | unused | stick-driven | `logcat` `SkwProductTest` entries |
 
-## 7. Troubleshooting
+## 8. Troubleshooting
 
 - **Serial console wedge**: bursts of `\n` at 115200. Avoid DTR ioctl.
 - **adbd hangs on `:5555` after long sessions**: cooldown 45 s or reboot; adbd
@@ -479,7 +497,7 @@ through ProductTest's uid-1000 surface instead**.
 - **`pm uninstall` times out occasionally**: adbd gets flaky after heavy PM
   activity — wait ~45 s or reboot.
 
-## 8. Safety & Recovery
+## 9. Safety & Recovery
 
 - **Never fire `MASTER_RESET`** (factory reset) unless you intend to wipe.
 - Never `pm uninstall` `com.skyworth.sysctl.provider` — it owns your ADB trigger.
@@ -488,7 +506,7 @@ through ProductTest's uid-1000 surface instead**.
 - If ADB ever locks out, plug the UART lane and re-fire `ENABLE_ADB` manually
   (Step 2), or temporarily reinstall `pwn.apk` via the USB lane.
 
-## 9. Credits
+## 10. Credits
 
 - **Arc Launcher** (`com.omeda.arc`) — a beautiful, actively developed TV
   launcher by **meddouribadis**.
@@ -513,7 +531,7 @@ through ProductTest's uid-1000 surface instead**.
 
 ---
 
-## 10. Appendix: MBOOT UART Hunt (negative results, documented)
+## 11. Appendix: MBOOT UART Hunt (negative results, documented)
 
 Multiple controlled attempts were made to reach an interactive MBOOT shell:
 
@@ -540,7 +558,7 @@ until one of the above surfaces.
 **Boot animation:** `/system/media/bootanimation.zip` (9.8 MB) — replacement
 requires `/system` write, i.e. the unlock above. Deferred until then.
 
-## 11. Appendix: Firmware Dump via BusyBox HTTPD (no root)
+## 12. Appendix: Firmware Dump via BusyBox HTTPD (no root)
 
 Raw block devices (`/dev/block/by-name/*`) are SELinux-denied to the `shell`
 uid — but nearly all firmware *content* lives on filesystems readable as
