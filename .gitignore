@@ -1,20 +1,19 @@
-# secrets
-*.pem
-*.pk8
-*.key
-*.der
-
-# build residue
-*.apk.bak
-__pycache__/
-*.pyc
-*.zip.tmp
-node_modules/
 
 # big binaries not needed in repo (pulled from device)
-SkyProductTest.apk
-
+# build residue
 # editor
-.vscode/
-.idea/
+# secrets
+*.apk.bak
+*.der
+*.key
+*.pem
+*.pk8
+*.pyc
 *.swp
+*.zip.tmp
+.idea/
+.vscode/
+Images/
+SkyProductTest.apk
+__pycache__/
+node_modules/

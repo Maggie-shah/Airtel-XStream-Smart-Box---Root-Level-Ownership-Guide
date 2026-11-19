@@ -112,6 +112,30 @@ near the PSU shield, and connect a 3.3V USB-UART bridge:
 > Locate the gaps with a continuity tester (header pad → nearest trace stub);
 > a thin braid wire or a solder blob per trace closes them.
 
+![Board overview](screenshots/board_overview.jpg)
+*Box internals — board overview during teardown.*
+
+![UART solder jumpers](screenshots/uart_header_solder_1.jpg)
+*UART header area — RX/TX traces ship open (before/around soldering).*
+
+![UART solder jumpers closeup](screenshots/uart_header_solder_2.jpg)
+*Closeup of the two jumper bridges on RX and TX tracks.*
+
+![Wiring detail](screenshots/wiring_detail.jpg)
+*FTDI wiring to the 3.3V TTL header during capture.*
+
+![IC closeup](screenshots/closeup_ic.jpg)
+*SoC / power section closeup.*
+
+![PCB vertical](screenshots/pcb_vertical.jpg)
+*Full PCB, vertical orientation.*
+
+![Screen panel](screenshots/stb_setting_screen.jpg)
+\*On-screen state during setup (STBSetting audio menus).\*
+
+> *Captions are best-effort from file order — if any label is wrong, PR to fix!*
+
+
 UART pinout on the header:
 
 | Pad | Signal |
