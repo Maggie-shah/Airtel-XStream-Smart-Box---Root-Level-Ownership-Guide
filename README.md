@@ -1,6 +1,6 @@
 # Airtel XStream Smart Box — Root-Level Ownership Guide
 
-**Target:** Skyworth HY00A ("Airtel XStream Smart Box"), MediaTek MT5751, Android 10 (kernel 4.19.84), user build `C10.5.0-20250818`, locked bootloader, `ro.adb.secure=1`, `ro.debuggable=0`
+**Target:** Skyworth HY001 ("Airtel XStream Smart Box"), MediaTek MT5751, Android 10 (kernel 4.19.84), user build `C10.5.0-20250818`, locked bootloader, `ro.adb.secure=1`, `ro.debuggable=0`
 
 **Outcome:** Complete operator-control removal without warranty-breaking unlock:
 network ADB (permanent, auto-auth), custom TV launcher as default HOME,
